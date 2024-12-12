@@ -1,0 +1,22 @@
+program 09
+------------------------
+
+question 05--> [create a new measure]--> TotalRevenue = sum(SalesTable[Revenue]) 
+
+question 06--> [create a new measure]--> AverageRevenuePerState = AVERAGEX(VALUES(SalesTable[State]),CALCULATE(SUM(SalesTable[Revenue])))
+ 
+question 07--> [create a new column]--> IF(SalesTable[AverageRevenuePerState] > 1000, "Profitable", "Non-Profitable") 
+
+------------------------
+program 11
+------------------------
+
+question 01 step1--> [create a new measure]--> measureEmployeeCount = COUNT('HR Analytics Data_Exp11'[EmployeeNumber])
+
+question 01 step2--> [create another new measure]--> measureAttritionCount = COUNTROWS(FILTER('HR Analytics Data_Exp11','HR Analytics Data_Exp11'[Attrition]="Yes")) 
+
+question 01 step3--> [create another new measure]--> AttritionRate = DIVIDE([measureAttritionCount],[measureEmployeeCount],0)*100 
+
+question 01 step4--> [create another new measure]--> measureActiveEmployees = [measureEmployeeCount]-[measureAttritionCount]
+
+question 01 step5--> [create another new measure]--> measureAverageAge = AVERAGE('HR Analytics Data_Exp11'[Age]
