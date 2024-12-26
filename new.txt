@@ -1,0 +1,248 @@
+program1---basic
+
+1.create a sheet----dataset vgsales
+2.qualitative fields---dimensions
+quantitative fields are called measures
+3.marks ---control the appearance of the data
+filters---used to limit the data displayed in  the view
+
+
+-----
+visualizations---
+a. bar chart ----global sales by genre [if data isnt aggregating properly check if aggregation is set to sum ---right click on global_sales-->measures--->sum
+b. sort ----- sort in ascending or descending
+c. filter -----drag years to filter shelf -----range of years we want to display
+
+
+add another worksheet 
+to show how global sales trend over time---global sales with time
+------
+create a dashboard
+
+to increase a dashboard size --select size --automatic
+----bar chart fr top genres and line chart for yearly sales
+
+
+-----------------------------------------------------------------------------------------
+program 2---joins
+
+connect the dataset...an excel file [file.xlsx]
+demographics -1.employeeid 2.nameofemployee 3.employeeage 4. employeegender
+jobtitle     1.employeeid  2.employeename   3,jobtitle
+salary       -1.employeeid 2.employeesalary
+
+
+3 sheets have a relation with employeeid hence can join them using that field
+
+drag demographics and salary into the canvas
+
+a.inner join
+tableau automatically detects the common field[if not manually select it and create inner joins]
+result-----will see only employees whose employee id matches in both demographics and salary table
+
+b.left join
+in join settings select left join
+returns all records from left table and only matched records from the right table [if no match null value is returned fr the values from the right table] 
+result------all employees will be returned even if there is a missing salary, salary information will be null fr those without a match
+
+c.right join
+again in the select settings select right join
+returns all records from the right table and only matching ones frm the left table..again if there is no match then null value is filled
+result------all employees's salary would be displayed even if an employeeid is not recorded[will be null]
+
+d.full outer join
+select full outer join
+returns all records when there is a match in either the left or right table here either in the demographics or in the salary table
+returns all records when there is a match in either the left or the riht table, if no match null is returned on both sides
+
+create a visualization now--------
+open a sheet and drag employee name to columns and employeesalary to rows....sort it in descending and drag employee salary to marks and select color label and other designs
+
+----------------------------------------------------------------------------------------
+program 3--- dataset vgsales
+a.creating a view , 
+b.format charts, 
+c.add filters, 
+d.create calculated fields, 
+e.define parameters
+------------------------
+a.creating a view
+1.connect to datasource
+2.create visulaization---new sheet--drag year to columns ,global_sales to rows and eu sales to rows [first line chart]
+3.in another sheet drag the same stuff and select barchart
+-------------------------
+b.format the chart
+1.right-click on global sales axis and select format
+2.in the format pane adjust the font style and size as required
+---change the title of the page
+---add annotations if required to highlight specific datapoints---to do this right click on the chart which u want to highlight and select annotate 
+-------------------------
+c.adding filters
+drag years to the filter shelf ----choose years to display
+------------------------
+d.creating calculated fields
+1.right click on globalsales ---select create----calculated field
+2.name your calculation as globalsales-eusales
+3. do a calculation as,          [globalsales]-[eusales]
+----add calculated field to visualization--->
+drag globalsales-eusales to rows to show global sales over year with Global sales-eusales over year
+-------------------------
+e.creating a parameter
+just like calculated field go to create by right clicking on the field and create a parameter---
+in that->
+NAME: select genre
+values:add an value from genre
+create a calculated field------>
+name:"sales by genre"
+formula: IF[Genre] = [Select Genre] THEN [Global Sales] Else 0 END
+----
+build a visualization--->
+drag year to columns
+drag sales by year to rows
+
+u should be able to see on the right side a selection option 
+
+again create a dashboard fr evrything
+----------------------------------------------------------------------------------------
+program  4---dashboard and story---------health expenditure
+a.components of a dashboard
+b.understanding how to place workers in containers
+c.action filters and its types
+
+
+begin by selecting the new story at the bottom
+1. drag sheets to the left pane
+2.rename the story by clicking add caption---sheet 1--provincial health expenditure2016
+--[use arrows to naviagate to other sheets]--sheet 2--[provincial health expenditure 1197 5-2018]
+
+FOCUS ON--> province or territory that is spending the most amount of money on health
+1.add another copy of sheet 1 between the inital 2 and select the territory called Ontario,and in the caption part select update option so that the entire map only shows the Ontario from other territories
+2. in the sheet 2 there must be a line chart maybe hover over the line which says Ontario and click on it and click update in the caption part so that in the entire page  only the line with the name Ontario is highlighted
+3. add a textbox by dragging "drag to text",onto the line graph
+4.write a mssg --Ontario has the highest healtht expenditure in Canada in 2016..expand textbox to show entire text box mssg
+-------------
+creating a dashboard with tablealu
+---drag the sheets into the content field
+---organize the sheets to look proper
+
+add titles to the graph chosen
+ad two texts namely Canada fr the upper most line in the sheet and also the lower lines are marked as provinces..and select the entire graph and ull see a side bar pop up in that select the filter option now the graph acts as a filter
+
+now if any line is selected it will be shown  in the above graph
+
+-------------------------------------------------------------------------------------------
+program 5--- nothing
+-------------------------------------------------------------------------------------------
+program 6---power connecting transforming 
+along the left side there are three options namely
+1. report
+2. data
+3. model
+select excel worksheet and select "salesforcourse_quiz_table.xlsx" [dataset]
+next go to transform data...rename columns or remove rows or columns or change the datatypes
+-----------------------------------------------------------------------------------------
+program 7---hr dataset--
+different types of charts, formatting charts, with title and colors
+as usual import dataset and do necessary transformations...that is select first row as header in case it is not already, if it is then dont do it again, then select attrition and add a new conditional column with the attrition as nae and values being if Yes then 1 or 0
+also change the datatype of the column to whole number
+
+
+---visualize in various forms now,, change the background colors and add borders fr evrything
+1. kpi charts -->-key point indicator ----the amount of progress made towards a measurable goal
+
+a.for the kpi chart drag in the number of employees and increase the transparency of the background so that its completely or a bit blends with the background
+
+b.pie chart --> legend --> department , values --> sum of attrition count
+
+c. use a stacked bar chart--> x-axis -->cf_age band[not stored properly] y-axis-->sum of employees count...in the filters tab sort the cf_age band in descending then just close and apply press the more options button and in that sort the cp_age_band column by select newly created column sort age and now
+
+d.matrix ---> job role--> rows , job satisfaction rating--> columns
+
+e.stacked bar chart--> x-axis-- sum of attrition count , y axis --education
+
+f.donut chart--> legend-- gender, values -- sum of attrition count
+
+g. slicer--> standalone chart used to filter the other visualizations on the page
+
+"in the field add education "
+
+-----------------------------------------------------------------------------------------
+program 08---filters nd formatting
+ " initially do the 7th program completely thn"...so again the hr dataset
+1.apply filter on dept---visual
+drag dept from datapane to filter-- filters on this page textbox-- basic filtering
+--hr dept selected...only hr data would be showin nd not abt r&d and sales
+
+2.advance filtering--->
+salary greater than or equal to 10000
+for this drag nd drop monthly income to the filter and adjust the filter to show data of values greater than or equal to 10000
+
+3.try top N filtering,....display top 4 job roles having the highest job satisfaction 
+
+select the job satisfaction rating visual,
+filter on this visual ----> job role
+filter type : top N
+change the N to 4
+by value : sum of job satisfaction
+------------------------------------------------------------------------------------------
+program 9 ---revenue dataset
+1. a map to spot the special trends to show the state which has the highest revenue
+--select the map visualization and 
+---drag the state to location
+---drag the revenue to values/size
+customize in the format pane , adjusting settings such as color size and tooltips
+
+2.create a line chart to show the revenue based on the month of the year
+1. month to the axis field 
+2. revenue to the values field
+again in the format pane customize it
+
+3.create a bin of size 10 for the age measure to create a new dimension to show the revenue
+a. create bins for age
+----data view and select age field....right click on the age and choose "new group"
+in group window ---select "bin" and set bin size to 10
+
+b. add to visualization
+create a new visualization...use "Stacked column chart"....
+new age bins----to x axis and 
+revenue to Y-axis
+
+4.create a donut chart view to show the percentage of revenue per region by creating zero access in the calculated field
+
+1. add a donut chart
+2. set up the chart....region --> legend
+		       revenue --> values
+3.create a zero access
+format pane --> detail labels --> set label position to inside 
+
+5.create a butterfly chart by reversing the bar chart to compare female & male revenue based on product category
+1. create a new measure --> TotalRevenue = sum(SalesTable[Revenue])
+use stacked column chart
+right click on the chart and press reverse or try somthn
+
+6.create a calculated field to show the average revenue per state and display profitable &non profitable state
+
+1.go to modeling tab --> select "new measure"
+enter the following dax formula to calculate the average revenue per state:
+
+AverageRevenuePerState= AVERAGEX(VALUES(SalesTable[State]),CALCULATE(SUM(SalesTable[Revenue])))
+
+this categorizes states
+
+one create one to categorize states as profitable or not based on the above calculation
+
+1.modelling tab ..new column..create profitability column....
+ProfitabilityStatus = IF(SalesTable[AverageRevenuePerState]>1000,"Profitable", "Non-Profitable")
+
+now display it....by choosing a table ..select state..averagerevenuestate and profitabilitystatus
+-------
+use a card now 
+revenue to field
+country to field
+--------
+slicer
+select slicer 
+drag country to field
+
+-----------
+build a dashboard
