@@ -1,3 +1,8 @@
+program 03
+------------------------
+[Global Sales] - [EU Sales]
+IF [Genre] = [Select Genre] THEN [Global Sales] ELSE 0 END
+
 program 09
 ------------------------
 
